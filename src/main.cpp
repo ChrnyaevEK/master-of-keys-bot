@@ -103,6 +103,9 @@ void handleNewMessages(int numNewMessages)
           for (unsigned long i = 0; i < sizeof(controlPins); i++)
           {
             control += "[{ \"text\" : \"" + controlLabels[i] + "\", \"callback_data\" : " + controlPins[i] + "}]";
+            if (i != sizeof(controlPins) - 1) {
+              control += ",";
+            }
           }
           control = "[" + control + "]";
           bot.sendMessageWithInlineKeyboard(chatId, "Available controls 🔐", "", control);
